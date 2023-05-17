@@ -6,7 +6,7 @@ public class ScoreFloorScript : MonoBehaviour
 {
     Animator floorAnim;
     StatsManagerScript stats;
-
+    
     void Start()
     {
         stats = GameObject.Find("Stats Manager").GetComponent<StatsManagerScript>();
@@ -14,12 +14,9 @@ public class ScoreFloorScript : MonoBehaviour
         floorAnim = gameObject.GetComponent<Animator>();
     }
 
-    public void OnTriggerEnter(Collider other){
+    public void OnTriggerExit(Collider other){
 
-        Debug.Log("hey");
-        
-        
-         if(other.gameObject.CompareTag("ball")){
+        if(other.gameObject.CompareTag("ball")){
         stats.AddPoints(50);
 
         floorAnim.Play("lightUp");

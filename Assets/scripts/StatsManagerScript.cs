@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class StatsManagerScript : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class StatsManagerScript : MonoBehaviour
 
     public GameObject gameOverScreen;
 
+    bool gameOver = false;
+
 
 
     void Start()
@@ -30,6 +33,18 @@ public class StatsManagerScript : MonoBehaviour
        
        scoreText.text = "Score: " + score;
        ballsText.text = "Balls: " + balls;  
+    }
+
+    void Update(){
+        if(gameOver){
+            if(Input.GetKey(KeyCode.Escape)){
+                Application.Quit();
+            }
+            if(Input.GetKey(KeyCode.Space)){
+                Time.timeScale = 1;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+        }
     }
 
     public void AddPoints(int points){
@@ -46,6 +61,7 @@ public class StatsManagerScript : MonoBehaviour
             NewBall();
         }else{
             gameOverScreen.SetActive(true);
+            gameOver = true;
             Time.timeScale = 0;
         }
     }

@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -46,9 +45,8 @@ public class PlayerController : MonoBehaviour
          }
          rightHingeJoint.spring = rightSpring;
     }
-<<<<<<< Updated upstream
+
 }
-=======
-}
->>>>>>> d919bb051aedac8c98682a8fb65281ce05db066a
->>>>>>> Stashed changes
+
+
+

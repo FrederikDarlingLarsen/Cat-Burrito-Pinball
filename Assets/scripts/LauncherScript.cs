@@ -25,7 +25,7 @@ void Update () {
 	if(Input.GetKey(KeyCode.Space) && ready){
 		//As the button is held down, slowly move the piece
 		if(moveCount < distance){
-			transform.Translate(0,0,-speed * Time.deltaTime);
+			transform.Translate(0,-speed * Time.deltaTime,0);
 			moveCount += speed * Time.deltaTime;
 			fire = true;
 		}
@@ -39,7 +39,7 @@ void Update () {
 			ready = false;
 		}
 		//Once we have reached the starting position fire off!
-		transform.Translate(0,0,10 * Time.deltaTime);
+		transform.Translate(0,10 * Time.deltaTime,0);
 		moveCount -= 10 * Time.deltaTime;
 	}
 	
