@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BouncyThing : MonoBehaviour
+public class SpringScript : MonoBehaviour
 {
+    
     StatsManagerScript stats;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    void Start(){
         stats = GameObject.Find("Stats Manager").GetComponent<StatsManagerScript>();
     }
-
     public void OnCollisionEnter(Collision collision){
-            stats.AddPoints(100);
+
+        collision.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * 1000);
+        stats.AddPoints(500);
+
+        
     }
 }

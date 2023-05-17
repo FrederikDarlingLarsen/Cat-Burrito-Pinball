@@ -2,40 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlipperController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
-
-
     public GameObject rightFlipper;
+    public GameObject leftFlipper;
+    HingeJoint leftHingeJoint;
+    HingeJoint rightHingeJoint;
+    Rigidbody ballRigidbody;
 
-    public GameObject lefFlipper;
-
-    public GameObject launcher;
-
-
-    Animator rightFlipperAnim;
-
-    Animator leftFlipperAnim;
-
-    bool launching = false;
-
-
-    // Start is called before the first frame update
     void Start()
     {
-        
+      leftHingeJoint = leftFlipper.GetComponent<HingeJoint>();
+      rightHingeJoint = rightFlipper.GetComponent<HingeJoint>();
+      leftHingeJoint.useSpring = true;
+      rightHingeJoint.useSpring = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(){
-        }
+        JointSpring leftSpring = new JointSpring();
+        leftSpring.spring = 30000.0f;
+        leftSpring.damper = 10.0f;
 
-        if(){
-        }
+         if(Input.GetKey(KeyCode.Q)){
+           leftSpring.targetPosition = -60.0f;
+         }
+         if(Input.GetKeyUp(KeyCode.Q)){
+           leftSpring.targetPosition = 0.0f;
+         }
+         leftHingeJoint.spring = leftSpring;
 
-        if(launching && ){
-        }
+        JointSpring rightSpring = new JointSpring();
+        rightSpring.spring = 30000.0f;
+        rightSpring.damper = 10.0f;
+
+         if(Input.GetKey(KeyCode.E)){
+            rightSpring.targetPosition = 60.0f;
+         }
+         if(Input.GetKeyUp(KeyCode.E)){
+            rightSpring.targetPosition = 0.0f;
+         }
+         rightHingeJoint.spring = rightSpring;
     }
 }

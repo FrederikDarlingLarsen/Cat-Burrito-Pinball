@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BouncyThing : MonoBehaviour
+public class PitScript : MonoBehaviour
 {
     StatsManagerScript stats;
-
-    // Start is called before the first frame update
+    
     void Start()
-    {
+    {  
         stats = GameObject.Find("Stats Manager").GetComponent<StatsManagerScript>();
     }
+    
+    public void OnTriggerEnter(Collider other){
 
-    public void OnCollisionEnter(Collision collision){
-            stats.AddPoints(100);
+        if(other.gameObject.CompareTag("ball")){
+
+            stats.LooseBall();
+
+        }
     }
 }
